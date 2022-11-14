@@ -12,7 +12,6 @@ const randomFirstName = faker.name.firstName();
 const randomLastName = faker.name.lastName();
 
 const homePage = new HomePage();
-const accountCreatePage = new AccountCreatePage(randomFirstName, randomLastName);
 const accountPage = new AccountPage();
 const addressEditPage = new AddressEditPage(randomFirstName, randomLastName);
 const addressIndexPage = new AddressIndexPage();
@@ -23,6 +22,7 @@ Cypress.Commands.add('acessarLinkCreateAnAccount', () => {
 })
 
 Cypress.Commands.add('cadastrarNovoUsuario', () => {
+    var accountCreatePage = new AccountCreatePage(randomFirstName, randomLastName);
     accountCreatePage.validaEntradaNaPaginaCadastroUsuario();
     accountCreatePage.preencheCadastroNovoUsuario();
     accountCreatePage.criaNovoUsuario();
