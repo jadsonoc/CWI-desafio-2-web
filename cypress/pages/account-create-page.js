@@ -6,7 +6,7 @@ class AccountCreatePage {
         this.randomLastName = randomLastName;
     }
     randomEmail = String(faker.datatype.number({min: 12000})) + faker.internet.email();
-    randomPassword = faker.internet.password();
+    randomPassword = faker.internet.password(15) + '#';
     
     url = 'customer/account/create'
     inputNome = '#firstname'
