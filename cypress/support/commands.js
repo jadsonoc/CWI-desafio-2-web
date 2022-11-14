@@ -10,7 +10,9 @@ import HomePage from '../pages/home-page';
 //edição de endereço (Adicionar um novo endereço)
 const randomFirstName = faker.name.firstName();
 const randomLastName = faker.name.lastName();
-
+//Foi utilizado uma var para que pudessem ser gerados dados novos entre a primeira e
+//a segunda execução, evitando erro de duplicidade de dados cadastrais
+var accountCreatePage = null;
 const homePage = new HomePage();
 const accountPage = new AccountPage();
 const addressEditPage = new AddressEditPage(randomFirstName, randomLastName);
@@ -21,11 +23,18 @@ Cypress.Commands.add('acessarLinkCreateAnAccount', () => {
     homePage.criarUmaConta();
 })
 
-Cypress.Commands.add('cadastrarNovoUsuario', () => {
-    var accountCreatePage = new AccountCreatePage(randomFirstName, randomLastName);
+Cypress.Commands.add('preencheCadastroNovoUsuario', () => {
+    accountCreatePage = new AccountCreatePage(randomFirstName, randomLastName);
     accountCreatePage.validaEntradaNaPaginaCadastroUsuario();
     accountCreatePage.preencheCadastroNovoUsuario();
+})
+
+Cypress.Commands.add('criaNovoUsuario', () => { 
+    accountCreatePage = new AccountCreatePage(randomFirstName, randomLastName);
     accountCreatePage.criaNovoUsuario();
+})
+
+Cypress.Commands.add('validarMensagemSucessoNovoUsuario', () => {
     accountPage.validaEntradaNaPaginaContaUsuario();
     accountPage.validaMensagemCriacaoUsuario();
 })
@@ -34,11 +43,17 @@ Cypress.Commands.add('acessarLinkEditAddress', () => {
     accountPage.editaEnderecos();
 })
 
-Cypress.Commands.add('cadastraNovoEndereco', () => {
+Cypress.Commands.add('preencheCadastroNovoEndereco', () => {
     addressEditPage.validaEntradaNaPaginaEditaEndereco();
     addressEditPage.validaDadosIniciaisApresentados();
     addressEditPage.preencheCadastroNovoEndereco();
+})
+
+Cypress.Commands.add('criaNovoEndereco', () => { 
     addressEditPage.salvaEndereco();
+})
+
+Cypress.Commands.add('validarMensagemSucessoNovoEndereco', () => {
     addressIndexPage.validaEntradaNaPaginaEndereco();
     addressIndexPage.validaMensagemCriacaoEndereco();
 })
