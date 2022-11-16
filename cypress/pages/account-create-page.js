@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker'
+
 class AccountCreatePage {
     
     constructor(randomFirstName, randomLastName) {

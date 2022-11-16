@@ -1,5 +1,5 @@
-/// <reference types="cypress"/>
 class HomePage {
+    
     url = Cypress.config('baseUrl');
     btnCriarUmaConta = '.panel > .header > ul';
 

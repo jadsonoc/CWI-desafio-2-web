@@ -1,9 +1,7 @@
 import { faker } from '@faker-js/faker'
-import AccountCreatePage from '../pages/account-create-page'
 
 class AddressEditPage {
-    //Implementado para poder validar o nome e sobrenome com os quais a plataforma
-    //inicializa os campos Nome e Sobrenome na edição do endereço (mesmos do cadastro)
+    
     constructor(randomFirstName, randomLastName) {
         this.randomFirstName = randomFirstName; 
         this.randomLastName = randomLastName;

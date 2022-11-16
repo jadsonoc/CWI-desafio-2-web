@@ -6,13 +6,11 @@ import AddressEditPage from '../pages/address-edit-page';
 import AddressIndexPage from '../pages/address-index-page';
 import HomePage from '../pages/home-page';
 
-//Dados gerados e armazenados nesse momento para viabilizar a asserção na página de 
-//edição de endereço (Adicionar um novo endereço)
+
 const randomFirstName = faker.name.firstName();
 const randomLastName = faker.name.lastName();
-//Foi utilizado uma var para que pudessem ser gerados dados novos entre a primeira e
-//a segunda execução, evitando erro de duplicidade de dados cadastrais
 var accountCreatePage = null;
+
 const homePage = new HomePage();
 const accountPage = new AccountPage();
 const addressEditPage = new AddressEditPage(randomFirstName, randomLastName);
